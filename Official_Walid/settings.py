@@ -78,16 +78,18 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'Official_Walid.wsgi.application'
+WSGI_APPLICATION = 'walidmouhanofficial.wsgi.application'
 
 
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 DATABASES = {
-    'default': dj_database_url.config(default=os.getenv('DATABASE_URL'))
+    'default': dj_database_url.config(
+        default='sqlite:///db.sqlite3',  # Fallback to SQLite if DATABASE_URL is not set
+        conn_max_age=600,  # Optional, in seconds
+    )
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
