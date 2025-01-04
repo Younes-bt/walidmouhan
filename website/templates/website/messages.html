@@ -1,0 +1,32 @@
+{% extends 'website/layout.html' %}
+{% block title %}الموقع الرسمي للباحث وليد موحن | الرسائل{% endblock %}
+
+{% block body %}
+
+<div class="container messages-container">
+    <div class="row w-100 messages-row">
+        <div class="col messages-col rounded rounded-3 w-100">
+            <h3 class="messages-col-title mb-5"> الرسائل الغير مقروءة ({{messagesnotseenCount}})</h3>
+            {% for message in messagesnotseen %}
+            <a href="{% url 'message' message.id %}" class="link text-dark">
+
+                <span class="message"> رسالة من : {{ message.author }} </span>
+            </a>
+            <hr>
+            {% endfor %}
+        </div>
+
+        <div class="col messages-col rounded rounded-3 w-100">
+            <h3 class="messages-col-title mb-5">الرسائل مقروءة ({{messagesseenCount}})</h3>
+            {% for message in messagesseen %}
+            <a href="{% url 'message' message.id %}" class="link text-dark">
+
+                <span class="message"> رسالة من : {{ message.author }} </span>
+            </a>
+            <hr>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}

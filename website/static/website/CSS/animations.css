@@ -1,0 +1,51 @@
+/* define animations */
+/* 
+@keyframes fade-in {
+    from {opacity: 0.1;}
+    to {opacity: 1;}
+}
+
+@keyframes move-in-right {
+    from {transform: translateX(100%);opacity: .1;}
+    to {transform: translateX(0%);opacity: 1;}
+}
+
+@keyframes move-in-left {
+    from {transform: translateX(-100%);opacity: .1;}
+    to {transform: translateX(0%);opacity: 1;}
+}
+
+
+
+applying */
+/* .banner, .banner-mobile {
+    animation: fade-in 1s ease-in ;
+}
+
+.bio-txt-mobile {
+    animation: move-in-right linear;
+    animation-timeline: view();
+    animation-range-start: 1%;
+    animation-range-end: 50%;
+}
+
+.bio-img-mobile {
+    animation: move-in-left linear;
+    animation-timeline: view();
+    animation-range-start: 5%;
+    animation-range-end: 20%;
+}
+
+.bio-txt {
+    animation: move-in-right linear;
+    animation-timeline: view();
+    animation-range-start: 5%;
+    animation-range-end: 50%;
+}
+
+.bio-img {
+    animation: move-in-left linear;
+    animation-timeline: view();
+    animation-range-start: 5%;
+    animation-range-end: 50%;
+} */

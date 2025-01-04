@@ -1,0 +1,16 @@
+{% extends 'website/layout.html' %}
+{% block title %}الموقع الرسمي للباحث وليد موحن | خطأ{% endblock %}
+
+{% block body %}
+
+<div class="container">
+    <div class="row error-body">
+        <div class="col error-card">
+            <h1 class="error-txt">error : 404</h1>
+            <h2 class="error-txt">عذرا، حدث خطأ في هذه الصفحة</h2>
+            <h2 class="error-txt"> {{message}} </h2>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

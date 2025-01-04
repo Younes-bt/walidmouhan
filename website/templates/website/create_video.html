@@ -1,0 +1,25 @@
+{% extends 'website/layout.html' %}
+{% block title %}الموقع الرسمي للباحث وليد موحن | أضف فيديو{% endblock %}
+
+{% block body %}
+
+
+<div class="container mt-5 create-page">
+    
+    <form action="{%url 'create_video' %}" method="POST" enctype="multipart/form-data" class="form-create w-50">
+        <h1 class="form-title m-auto">إضافة فيديو جديد</h1>
+        {% csrf_token %}
+        <label for="artcile_title" class="form-label">
+            عنوان الفيديو: 
+        </label>
+        {{form.title}}
+
+        <label for="video-Link" class="form-label" id="label-link">رابط الفيديو:</label>
+        {{form.vidLink}}
+
+        <button type="submit" class="btn btn-primary w-100 mt-5">أضف الفيديو</button>
+    </form>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,329 @@
+{% extends 'website/layout.html' %}
+
+{% block title %}الموقع الرسمي للباحث وليد موحن | الرئيسية{% endblock %}
+
+{% block body %}
+
+<div class="container">
+
+
+</div>
+<section class="container section-banner">
+    <div class="row banner justify-content-center d-none d-md-flex">
+
+        <div class="col-12 col-lg-6 col-md-6 banner-txt-erea ">
+            <span class="banner-txt-1 text-center mt-2 banner-welcom"> مرحبا بكم في الموقع الرسمي للباحث </span>
+            <h1 class="banner-txt-2 text-center banner-name"> وليد موحن </h1>
+            <span class="banner-txt-1 text-center mt-2 banner-welcom"> حيث تجدون اخر مقالاتنا و كتبنا العلمية و كذلك أخر
+                المقالات المختلفة في شتى الحقول العلمية من دكاترة و باحثين أجلاء </span>
+        </div>
+        <div class="col-12 col-lg-5 col-md-6 banner-img-area">
+            <img src="https://res.cloudinary.com/daeuundyc/image/upload/v1732406623/Walid_Project/elchofa1m1ipbzikwqcw.png"
+                class="banner-img" alt="walid Mouhan Picture">
+        </div>
+    </div>
+    <div class="row banner-mobile justify-content-center d-flex d-md-none">
+        <div class="col-12 banner-img-area-mobile mt-2">
+            <img src="https://res.cloudinary.com/daeuundyc/image/upload/v1732406623/Walid_Project/elchofa1m1ipbzikwqcw.png"
+                class="banner-img-mobile" alt="walid Mouhan Picture">
+        </div>
+        <div class="col-12 banner-txt-erea-mobile">
+            <span class="banner-txt-1 text-center mt-2 banner-welcom-mobile"> مرحبا بكم في الموقع الرسمي للباحث </span>
+            <h1 class="banner-txt-2 text-center banner-name-mobile"> وليد موحن </h1>
+            <span class="banner-txt-1 text-center  banner-welcom-mobile"> حيث تجدون اخر مقالاتنا و كتبنا العلمية و كذلك
+                أخر المقالات المختلفة في شتى الحقول العلمية من دكاترة و باحثين أجلاء </span>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+<div class="container">
+
+    <div class="row">
+        <div class="col-12 col-lg-12">
+            <!-- Welcom Message -->
+            <section class="container section-whoarewe section-card mt-3" id="section-whoarewe">
+                <div class="col-12 section-bio">
+                    <h1 class="section-bio-title">كلمة ترحيبية</h1>
+                </div>
+
+                <div class="row bio-row">
+                    <div class="col-12 col-md-6 bio-col-img">
+                        <img src="https://res.cloudinary.com/daeuundyc/image/upload/v1732453816/Walid_Project/ygbdrkgcxwvc15obsroi.jpg"
+                            class="bio-img bio-img-mobile" alt="Walid-mouhan-reading-a-book">
+                    </div>
+                    <div class="col-12 col-md-6 bio-col-txt">
+                        <p class="bio-txt mt-2 bio-txt-mobile">
+                            <span class="mb-4">مرحبا بكم في منصتي العلمية الرسمية. </span>
+                            <span class="mb-4">أنا <strong>الباحث وليد موحن</strong>، باحث مغربي متخصص في التاريخ
+                                المعاصر، مع تركيز خاص على دراسات الحماية الإسبانية بالمغرب. حصلت على الإجازة في التاريخ
+                                والحضارة، والإجازة المهنية في تدريس التاريخ والجغرافيا، وأواصل حالياً أبحاثي لنيل درجة
+                                الدكتوراه.
+                            </span>
+                            <span class="mb-4">
+                                يتمحور اهتمامي البحثي حول العلاقات التجارية والثقافية في شمال المغرب. أشارك بانتظام في
+                                المؤتمرات الدولية وأنشر أبحاثاً أكاديمية محكمة. كما أدير "صفحة الباحث وليد موحن
+                                التاريخية" التي تعد منصة رقمية لنشر المعرفة التاريخية.
+                            </span>
+                            <span class="mb-4">
+                                يضم هذا الموقع مجموعة من أبحاثي ودراساتي التي تسهم في إثراء المكتبة التاريخية المغربية
+                                والعربية. أدعوكم لاستكشاف محتوى الموقع والاستفادة من نتاج بحثي الأكاديمي.
+                            </span>
+                        </p>
+                        <div class="btn-div d-flex justify-content-center">
+                            <a href="{% url 'cv' %}" class="btn">
+                                <button type="button" class="btn btn-more">إطلع على السيرة الذاتية</button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- last articles -->
+            <section class="container-fluid section-articles" id="section-articles">
+                <div class="col-12 section-articles-title">
+                    <h1 class="section-title">أخر المقالات</h1>
+                </div>
+                <div class="row articles-car articles-large d-none d-lg-flex h-100 px-5">
+                    <div id="cardCarousel" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+
+                                <div class="d-flex">
+                                    {% for article in articles1 %}
+
+                                    <div class="card m-2 w-50">
+                                        <a href="{% url 'articles' article.id %}">
+                                            <img src="{{ article.imgUrl.url }}" class="card-img-lg" alt="...">
+                                            <div class="card-img-overlay card-txt-lg d-flex flex-wrap">
+                                                <h5 class="card-title text-center"> {{ article.title }}
+                                                </h5>
+
+                                                <p class="card-text"><small>{{ article.created_at }}</small></p>
+
+                                            </div>
+                                        </a>
+                                    </div>
+
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="d-flex">
+                                    {% for article in articles2 %}
+
+                                    <div class="card m-2 w-50">
+                                        <a href="{% url 'articles' article.id %}">
+                                            <img src="{{ article.imgUrl.url }}" class="card-img-lg" alt="...">
+                                            <div class="card-img-overlay card-txt-lg d-flex flex-wrap">
+                                                <h5 class="card-title text-center"> {{ article.title }}
+                                                </h5>
+
+                                                <p class="card-text"><small>{{ article.created_at }}</small></p>
+                                            </div>
+                                        </a>
+                                    </div>
+
+                                    {% endfor %}
+
+                                </div>
+                            </div>
+                        </div>
+                        <a class="carousel-control-prev" href="#cardCarousel" role="button" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon car-icons" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#cardCarousel" role="button" data-bs-slide="next">
+                            <span class="carousel-control-next-icon car-icons" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </a>
+                    </div>
+                    <div class="btn-div d-flex justify-content-center">
+                        <a href="{% url 'all_articles' %}" class="btn w-75">
+                            <button type="button" class="btn btn-more w-75">إطلع على جميع المقالات</button>
+                        </a>
+                    </div>
+
+                </div>
+                <div class="row articles-car articles-large d-flex d-lg-none">
+                    <div id="cardCarousel-phone" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            {% for article in articles1 %}
+                            <a href="{% url 'articles' article.id %}">
+                                <div class="carousel-item active">
+                                    <div class="d-flex">
+                                        <div class="card m-2 w-100">
+                                            <img src="https://res.cloudinary.com/daeuundyc/image/upload/v1732417607/Walid_Project/syt2cs2chj2quwrb4mv3.jpg"
+                                                class="card-img-lg" alt="صورة المقال">
+                                            <div class="card-img-overlay card-txt-lg">
+                                                <h5 class="card-title text-center"> {{ article.title }}
+                                                </h5>
+
+                                                <p class="card-text"><small> {{article.created_at}} </small></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                            {% endfor %}
+
+                            <a class="carousel-control-prev" href="#cardCarousel-phone" role="button"
+                                data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon car-icons" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </a>
+                            <a class="carousel-control-next" href="#cardCarousel-phone" role="button"
+                                data-bs-slide="next">
+                                <span class="carousel-control-next-icon car-icons" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </a>
+                        </div>
+
+                    </div>
+                    <div class="btn-div d-flex justify-content-center">
+                        <a href="{% url 'all_articles' %}" class="btn w-100">
+                            <button type="button" class="btn btn-more w-100">إطلع على جميع المقالات</button>
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- last Videos -->
+            <section class="container-fluid section-Videos section-card" id="section-Videos">
+                <div class="col-12 section-articles-title">
+                    <h1 class="section-title">أخر الفيديوهات</h1>
+                </div>
+
+                <div class="row articles-car articles-large d-none d-lg-flex h-100 px-5">
+                    <div id="cardCarousel-video" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <div class="d-flex">
+                                    {% for video in videos1 %}
+
+                                    <div class="card m-2 w-50">
+                                        <iframe src="https://www.youtube.com/embed/{{ video.vidLink|slice:'-11:' }}"
+                                            class="card-img-lg" title="YouTube video player" frameborder="0"
+                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                            allowfullscreen>
+                                        </iframe>
+                                        <div class=" card-txt-lg-light d-flex flex-wrap">
+                                            <h5 class="card-title text-center"> {{video.title}} </h5>
+
+                                            <p class="card-text"><small>تمت الإضافة: {{video.created_at}}</small></p>
+                                            
+
+                                        </div>
+                                    </div>
+
+
+                                   
+
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            <div class="carousel-item active">
+                                <div class="d-flex">
+                                    {% for video in videos2 %}
+
+                                    <div class="card m-2 w-50">
+                                        <iframe src="https://www.youtube.com/embed/{{ video.vidLink|slice:'-11:' }}"
+                                            class="card-img-lg" title="YouTube video player" frameborder="0"
+                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                            allowfullscreen>
+                                        </iframe>
+                                        <div class=" card-txt-lg-light d-flex flex-wrap">
+                                            <h5 class="card-title text-center"> {{video.title}} </h5>
+
+                                            <p class="card-text"><small>تمت الإضافة: {{video.created_at}}</small></p>
+
+                                        </div>
+                                    </div>
+
+
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                        <a class="carousel-control-prev" href="#cardCarousel-video" role="button" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon car-icons" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#cardCarousel-video" role="button" data-bs-slide="next">
+                            <span class="carousel-control-next-icon car-icons" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </a>
+                    </div>
+                    <div class="btn-div d-flex justify-content-center">
+                        <a href="{% url 'all_videos' %}" class="btn w-75">
+                            <button type="button" class="btn btn-more w-75">إطلع على جميع المرئيات</button>
+                        </a>
+                    </div>
+                </div>
+
+
+                <div class="row articles-car articles-large d-flex d-lg-none">
+                    <div id="cardCarousel-video-phone" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            {% for video in videos2 %}
+                            <div class="carousel-item active">
+                                <div class="d-flex">
+
+                                    <div class="card m-2 w-100">
+                                        <iframe src="https://www.youtube.com/embed/{{ video.vidLink|slice:'-11:' }}"
+                                            class="card-img-lg" title="YouTube video player" frameborder="0"
+                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                            allowfullscreen>
+                                        </iframe>
+                                        <div class="card-txt-lg-light d-flex flex-wrap">
+                                            <h5 class="card-title text-center"> {{video.title}} </h5>
+
+                                            <p class="card-text"><small>تمت الإضافة: {{video.created_at}}</small></p>
+                                           
+
+                                        </div>
+                                    </div>
+
+
+                                   
+
+                                </div>
+                            </div>
+                            {% endfor %}
+
+
+                        </div>
+                        <a class="carousel-control-prev" href="#cardCarousel-video-phone" role="button"
+                            data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon car-icons" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#cardCarousel-video-phone" role="button"
+                            data-bs-slide="next">
+                            <span class="carousel-control-next-icon car-icons" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </a>
+                    </div>
+                    <div class="btn-div d-flex justify-content-center">
+                        <a href="{% url 'all_videos' %}" class="btn w-100">
+                            <button type="button" class="btn btn-more w-100">إطلع على جميع المرئيات</button>
+                        </a>
+                    </div>
+                </div>
+
+
+
+            </section>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+{% endblock %}

@@ -1,0 +1,90 @@
+{% extends 'website/layout.html' %}
+
+{% block title %}الموقع الرسمي للباحث وليد موحن | جميع الفيديوهات{% endblock %}
+
+
+{% block body %}
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-12 col-lg-8 p-3">
+            <div class="col-12 section-articles-title">
+                <a href="{%  url 'all_videos'%}" class="link">
+                    <h1 class="section-title">جميع الفيديوهات</h1>
+                </a>
+            </div>
+            <div class="row d-flex">
+                {% for video in videos %}
+                <div class="col-12 col-lg-6 p-2 order-last order-lg-first d-none d-lg-flex">
+                    <div class="card m-2">
+                        <iframe src="https://www.youtube.com/embed/{{ video.vidLink|slice:'-11:' }}" class="card-img-lg"
+                            title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen>
+                        </iframe>
+                        <div class=" card-txt-lg-light d-flex flex-wrap">
+                            <h5 class="card-title text-center mt-2"> {{video.title}} </h5>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+
+                {% for video in videos %}
+                <div class="col-12 order-last order-lg-first d-flex d-lg-none bg-white mt-2 py-2 w-100">
+                    <div class="card m-2">
+                        <iframe src="https://www.youtube.com/embed/{{ video.vidLink|slice:'-11:' }}" class="card-img-lg"
+                            title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen>
+                        </iframe>
+                        <div class=" card-txt-lg-light d-flex flex-wrap">
+                            <h5 class="card-title text-center mt-2"> {{video.title}} </h5>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+
+            </div>
+        </div>
+        <div class="col-12 col-lg-4 order-first order-lg-last">
+            <div class="row d-flex flex-column">
+                <div class="col bg-white rounded rounded-3 text-center col-search">
+                    <form action="{% url 'all_videos' %}" method="POST">
+                        {% csrf_token %}
+                        <fieldset>
+                            <legend>إبحث</legend>
+                            <p class="searchAll-text">يمكنك العثور على الفيديوهات عن طريق كتابة عنوانه أو كلمة دلالية :
+                            </p>
+                        </fieldset>
+                        <div class="mb-3">
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" id="basic-addon1">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                        class="bi bi-search" viewBox="0 0 16 16">
+                                        <path
+                                            d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
+                                    </svg>
+                                </span>
+                                <input type="text" class="form-control" placeholder="مثال : علال ابن عبد الله"
+                                    aria-label="البحث" aria-describedby="basic-addon1" id="searchAll" name="search-For">
+                            </div>
+                        </div>
+                        <button type="submit" class="btn bg-primary w-75 text-white mb-3">إبحث</button>
+                    </form>
+                </div>
+                <div class="col bg-white rounded rounded-3 text-center mt-3 col-most-read pt-4">
+                    <h4>أكثر المقالات قراءة</h4>
+                    <hr>
+                    {% for article in most_read_artcles %}
+                    <a href="{% url 'articles' article.id %}" class="link text-dark most-read-link">
+                        <div class="most-read">
+                            <span class="most-article-title">{{article.title}}</span>
+                            <hr>
+                        </div>
+                    </a>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

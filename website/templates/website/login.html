@@ -1,0 +1,30 @@
+{% extends 'website/layout.html' %}
+{% block title %}الموقع الرسمي للباحث وليد موحن | تسجيل الدخول{% endblock %}
+
+{% block body %}
+
+<div class="container">
+    <div class="row form-row">
+        <div class="col form-col rounded rounded-3">
+            <form action="{% url 'login' %}" method="POST">
+                <legend class="form-title">تسجيل الدخول</legend>
+                {% csrf_token %}
+                <div class="mb-1">
+                    <label for="exampleFormControlInput1" class="form-label form-login">الإيميل</label>
+                    <input type="text" class="form-control form-login" id="exampleFormControlInput1"
+                    placeholder="الإيميل" required aria-describedby="emailHelp" name="email">
+                </div>
+                <div class="mb-1">
+                    <label for="exampleFormControlInput" class="form-label form-login">كلمة المرور</label>
+                    <input type="password" class="form-control form-login" id="exampleFormControlInput" required name="password">
+                    <span class="login-error"> {{message}} </span>
+                </div>
+                <div class="mb-5">
+                    <button type="submit" class="btn btn-primary w-100 m-auto">تسجيل الدخول</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

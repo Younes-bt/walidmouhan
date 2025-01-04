@@ -1,0 +1,51 @@
+{% extends 'website/layout.html' %}
+{% load static %}
+
+{% block title %}الموقع الرسمي للباحث وليد موحن | أضف مقال{% endblock %}
+
+{% block body %}
+
+
+<div class="container mt-5 create-page">
+    
+    <form action="{%url 'create_article' %}" method="POST" enctype="multipart/form-data" class="form-create w-50">
+        <h1 class="form-title m-auto">إضافة مقال جديد</h1>
+        {% csrf_token %}
+        <!-- <label for="artcile_title" class="form-label">
+            عنوان المقال: 
+        </label>
+        <input type="text" name="title" id="artcile_title" class="form-control form-input" aria-describedby="titleHelp">
+        <div id="titleHelp" class="form-text">ضع عنوان المقال هنا</div> -->
+        <label for="artcile_title" class="form-label">
+            عنوان المقال: 
+        </label>
+        {{form.title}}
+
+        <label for="article-cat" class="form-label">نوع المقال:</label>
+        {{form.category}}
+
+        <label for="article-id" class="form-label" id="label-id">رابط الملف:</label>
+        {{form.pdfID}}
+        
+        <label for="magazin-id" class="form-label" id="label-magazin">إسم المجلة المنشور بها المقال:</label>
+        {{form.magazin}}
+        
+        <label for="article-resume" class="form-label" id="label-image">ضع ملخص (أقل من 5000 حرف) للمقال:</label>
+        {{form.resume}}
+
+        <label for="puplished_day-id" class="form-label" id="label-puplished_day"> تاريخ نشر المقال بالمجلة:</label>
+        {{form.puplished_day}}
+
+        <label for="artcile_content" class="form-label" id="label-content">اكتب أو انسخ المقال:</label>
+        {{form.content}}
+        
+        <label for="article-image" class="form-label" id="label-image">حمل صورة المقال:</label>
+        {{form.imgUrl}}
+
+        <button type="submit" class="btn btn-primary w-100 mt-5">أضف المقال</button>
+    </form>
+</div>
+
+<script src="{% static 'website/JS/scripts-new-article.js' %}"></script>
+
+{% endblock %}
