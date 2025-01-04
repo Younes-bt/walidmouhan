@@ -87,11 +87,11 @@ WSGI_APPLICATION = 'walidmouhan.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.getenv('DB_NAME', 'dpg-ctsk5sa3esus73dr6cq0-a.render.com'),
-        'USER': os.getenv('DB_USER', 'walidmouhan_user'),
-        'PASSWORD': os.getenv('DB_PASSWORD', 'NYcQePHetOwqI9KH85h3gvlPJShGBdCf'),
-        'HOST': os.getenv('DB_HOST', 'dpg-ctsk5sa3esus73dr6cq0-a.render.com'),
-        'PORT': os.getenv('DB_PORT', '5432'),
+        'NAME': 'walidmouhan',
+        'USER': 'walidmouhan_user',
+        'PASSWORD': 'NYcQePHetOwqI9KH85h3gvlPJShGBdCf',
+        'HOST': 'dpg-ctsk5sa3esus73dr6cq0-a',
+        'PORT': '5432',
     }
 }
 
