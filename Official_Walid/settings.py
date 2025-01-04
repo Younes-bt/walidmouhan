@@ -31,7 +31,7 @@ SECRET_KEY = '!e$h#zgz37=rq0macixb$erm7%4kb7rn--9k4-3is0g&$*e4ky'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["walidmouhanoffical1.onrender.com"]
+ALLOWED_HOSTS = ["walidmouhan-2.onrender.com"]
 
 
 # Application definition
