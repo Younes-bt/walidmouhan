@@ -29,7 +29,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = '!e$h#zgz37=rq0macixb$erm7%4kb7rn--9k4-3is0g&$*e4ky'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ["walidmouhan-2.onrender.com", 'walidmouhan.com', 'www.walidmouhan.com']
 
