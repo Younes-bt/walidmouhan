@@ -26,7 +26,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '!e$h#zgz37=rq0macixb$erm7%4kb7rn--9k4-3is0g&$*e4ky'
+
+SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
@@ -84,16 +85,6 @@ WSGI_APPLICATION = 'walidmouhan.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'walidmouhan',
-#         'USER': 'walidmouhan_user',
-#         'PASSWORD': 'NYcQePHetOwqI9KH85h3gvlPJShGBdCf',
-#         'HOST': 'dpg-ctsk5sa3esus73dr6cq0-a',
-#         'PORT': '5432',
-#     }
-# }
 
 DATABASES = {
     'default': {
@@ -151,18 +142,19 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+
 # Cloudinary configuration
 CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': 'daeuundyc',
-    'API_KEY': '397825899438149',
-    'API_SECRET': 'd9yCCVS0uU6zMs19ZkzOj0LFC3I',
+    'CLOUD_NAME': os.getenv('CLOUD_NAME'),
+    'API_KEY': os.getenv('CLOUD_API_KEY'),
+    'API_SECRET': os.getenv('CLOUD_API_SECRET')
 }
 
 # Configure cloudinary library
 cloudinary.config( 
-    cloud_name = "daeuundyc", 
-    api_key = "397825899438149", 
-    api_secret = "d9yCCVS0uU6zMs19ZkzOj0LFC3I"
+    cloud_name = os.getenv('CLOUD_NAME'),
+    api_key = os.getenv('CLOUD_API_KEY'),
+    api_secret = os.getenv('CLOUD_API_SECRET')
 )
 
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
