@@ -155,3 +155,9 @@ cloudinary.config(
 )
 
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
+
+try:
+    from .settings_local import *
+except:
+    pass
