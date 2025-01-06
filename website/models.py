@@ -60,4 +60,4 @@ class Message(models.Model):
 
 
     def __str__(self):
-        return f'{self.author}'
+        return f'{self.author} at {self.created_at}'
