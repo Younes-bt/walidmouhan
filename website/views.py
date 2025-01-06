@@ -189,8 +189,8 @@ def logout_view(request):
 
 def messages_view(request):
     messages_list = Message.objects.all()
-    messages_list_not_seen = Message.objects.filter(sentTo=request.user, seen=False)
-    messages_list_seen = Message.objects.filter(sentTo=request.user, seen=True)
+    messages_list_not_seen = Message.objects.filter(sentTo=request.user, seen=False).order_by('-created_at')
+    messages_list_seen = Message.objects.filter(sentTo=request.user, seen=True).order_by('-created_at')
 
     return render(request, 'website/messages.html', {
         'messages':messages_list,
