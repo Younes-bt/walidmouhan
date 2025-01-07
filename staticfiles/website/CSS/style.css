@@ -493,6 +493,8 @@ body {
 
 .error-txt {
     font-size: 1.3rem;
+    text-align: center;
+    direction: rtl;
 }
 
 .form-row {
@@ -524,7 +526,7 @@ body {
 }
 
 .messages-container {
-    height: 70dvh !important;
+    margin: 1rem 0rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -535,15 +537,18 @@ body {
 }
 
 .messages-col-title {
+    font-size: 1.4rem !important;
     margin-bottom: 1rem;
     margin-top: 1rem;
+    color: #1877F2;
 }
 
 .messages-col {
     display: flex;
     flex-direction: column;
     background-color: #fff;
-    border-top: 1rem solid #1877F2;
+    border-top: 2rem solid #1877F2;
+
 }
 
 .message:hover {
@@ -582,4 +587,8 @@ body {
 .article-content-col {
     background-color: #fff;
     border-top: 1rem solid #1877F2;
+}
+
+.single-message {
+    background-color: #e4e0d1;
 }
