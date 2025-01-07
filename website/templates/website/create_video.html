@@ -6,7 +6,7 @@
 
 <div class="container mt-5 create-page">
     
-    <form action="{%url 'create_video' %}" method="POST" enctype="multipart/form-data" class="form-create w-50">
+    <form action="{%url 'create_video' %}" method="POST" enctype="multipart/form-data" class="form-create w-50 mb-3">
         <h1 class="form-title m-auto">إضافة فيديو جديد</h1>
         {% csrf_token %}
         <label for="artcile_title" class="form-label">

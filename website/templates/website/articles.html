@@ -31,8 +31,8 @@
         <div class="col-12 col-lg-4 article-infos rounded rounded-3">
 
             <h3 class="article-view-title">الملخص </h3>
-            {% if article.resume == None %}
-            <p class="article-resume">لا يوجد ملخص للمقال</p>
+            {% if not article.resume %}
+            <p class="article-resume">لا يوجد ملخص لهذا المقال</p>
             {% else %}
             <p class="article-resume"> {{article.resume}} </p>
             {% endif %}

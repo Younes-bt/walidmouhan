@@ -4,26 +4,30 @@
 {% block body %}
 
 <div class="container messages-container">
-    <div class="row w-100 messages-row">
-        <div class="col messages-col rounded rounded-3 w-100">
+    <div class="row w-100 messages-row ">
+        <div class="col messages-col rounded rounded-3 pb-3">
             <h3 class="messages-col-title mb-5"> الرسائل الغير مقروءة ({{messagesnotseenCount}})</h3>
             {% for message in messagesnotseen %}
-            <a href="{% url 'message' message.id %}" class="link text-dark">
+            <div class="col mb-1 pt-2 rounded rounded-3 single-message">
 
-                <span class="message"> رسالة من : {{ message.author }} </span>
-            </a>
-            <hr>
+                <a href="{% url 'message' message.id %}" class="link text-dark">
+                    <h5 class="message text-primary-emphasis"> {{ message.author }}  </h5>
+                    <p> {{message.content}} </p>
+                </a>
+            </div>
             {% endfor %}
         </div>
-
-        <div class="col messages-col rounded rounded-3 w-100">
+ 
+        <div class="col messages-col rounded rounded-3 pb-3">
             <h3 class="messages-col-title mb-5">الرسائل مقروءة ({{messagesseenCount}})</h3>
             {% for message in messagesseen %}
+            <div class="col mb-1 pt-2 rounded rounded-3 single-message">
             <a href="{% url 'message' message.id %}" class="link text-dark">
-
-                <span class="message"> رسالة من : {{ message.author }} </span>
+                <h5 class="message text-primary-emphasis"> {{ message.author }}  </h5>
+                <p> {{message.content}} </p>
             </a>
-            <hr>
+        </div>
+        
             {% endfor %}
         </div>
     </div>

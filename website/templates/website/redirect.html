@@ -1,0 +1,25 @@
+{% extends 'website/layout.html' %}
+{% block title %}الموقع الرسمي للباحث وليد موحن{% endblock %}
+
+{% block body %}
+
+<div class="container">
+    <div class="row error-body">
+        <div class="col error-card">
+            <svg xmlns="http://www.w3.org/2000/svg" width="70" height="70" fill="{{color}}" class="bi bi-check-circle-fill"
+                viewBox="0 0 16 16">
+                <path
+                    d="{{icon}}" />
+            </svg>
+            
+            <h1 class="error-txt fs-2 fw-bold my-5"> {{message}} </h1>
+            <div class="col">
+                <a href="{% url 'index' %}">
+                    <button type="button" class="btn btn-primary">الصفحة الرئيسية</button>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

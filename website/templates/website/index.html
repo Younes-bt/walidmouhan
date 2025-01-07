@@ -154,7 +154,7 @@
                         <div class="carousel-inner">
                             {% for article in articles1 %}
                             <a href="{% url 'articles' article.id %}">
-                                <div class="carousel-item active">
+                                <div class="carousel-item ">
                                     <div class="d-flex">
                                         <div class="card m-2 w-100">
                                             <img src="https://res.cloudinary.com/daeuundyc/image/upload/v1732417607/Walid_Project/syt2cs2chj2quwrb4mv3.jpg"
@@ -267,7 +267,7 @@
 
 
                 <div class="row articles-car articles-large d-flex d-lg-none">
-                    <div id="cardCarousel-video-phone" class="carousel slide" data-bs-ride="carousel">
+                    <div id="cardCarousel-video-phone" class="carousel active" data-bs-ride="carousel">
                         <div class="carousel-inner">
                             {% for video in videos2 %}
                             <div class="carousel-item active">
@@ -287,10 +287,6 @@
 
                                         </div>
                                     </div>
-
-
-                                   
-
                                 </div>
                             </div>
                             {% endfor %}
