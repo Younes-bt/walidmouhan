@@ -640,3 +640,13 @@ body {
     justify-content: center;
 }
 
+.borrow-book-banner-text-2 {
+    font-family: 'Alexandria', sans-serif !important;
+    font-size: clamp(1rem, 2vw, 1.1rem);
+    text-align: justify;
+    direction: rtl;
+    font-weight: 500;
+    color: #ffffff;
+    font-weight: 300;
+}
+

@@ -214,3 +214,7 @@ def message_view(request, id):
     return render(request, 'website/message.html', {
         'message':message
     })
+
+
+def borrwo_book(request):
+    return render(request, 'website/borrow-Books.html')

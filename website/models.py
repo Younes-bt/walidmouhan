@@ -61,3 +61,76 @@ class Message(models.Model):
 
     def __str__(self):
         return f'{self.author} at {self.created_at}'
+
+
+class Book_genre(models.Model):
+    title = models.CharField(max_length=300, null=False, blank=False)
+
+    def __str__(self):
+        return self.title
+    
+class City(models.Model):
+    title = models.CharField(max_length=300, null=False, blank=False)
+
+    def __str__(self):
+        return self.title
+class Profession(models.Model):
+    title = models.CharField(max_length=300, null=False, blank=False)
+
+    def __str__(self):
+        return self.title
+class University(models.Model):
+    title = models.CharField(max_length=300, null=False, blank=False)
+
+    def __str__(self):
+        return self.title
+class Response_to_Book_requests(models.Model):
+    title = models.CharField(max_length=300, null=False, blank=False)
+
+    def __str__(self):
+        return self.title
+class books_operation_situations(models.Model):
+    title = models.CharField(max_length=300, null=False, blank=False)
+
+    def __str__(self):
+        return self.title
+
+class Book(models.Model):
+    title = models.CharField(max_length=200, null=False, blank=False)
+    author = models.CharField(max_length=300, null=False, blank=False)
+    pub_year = models.IntegerField(null=True, blank=False)
+    pict = CloudinaryField('image', blank=True, null=True)
+    description = models.TextField(max_length=1000, null=True, blank=True)
+    genres = models.ManyToManyField(Book_genre, related_name='books')
+    owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name='books_added', null=False)
+
+
+    def __str__(self):
+        return f'{self.title} by {self.author}, added by : {self.owner.username}'
+
+
+class Profile(models.Model):
+    user = models.ForeignKey(User, null=True, blank=True, on_delete=models.CASCADE, related_name='user_profile')
+    full_name = models.CharField(max_length=50, null=False, blank=False)
+    pict = CloudinaryField('image', blank=True, null=True)
+    city = models.ForeignKey(City, on_delete=models.CASCADE)
+    profession = models.ForeignKey(Profession, on_delete=models.CASCADE)
+    university = models.ForeignKey(University, on_delete=models.CASCADE)
+    books_added = models.ManyToManyField(Book, related_name='added_by', null=True, blank=True)
+    books_borrwed = models.ManyToManyField(Book, related_name='borrwed_by', null=True, blank=True)
+    books_actually_borrwed = models.ManyToManyField(Book, related_name='borrwed_now', null=True, blank=True)
+    rating = models.IntegerField(blank=False, null=False, default=5)
+
+    def __str__(self):
+        return self.full_name
+    
+
+class Book_operation(models.Model):
+    book = models.ForeignKey(Book, on_delete=models.CASCADE, related_name='operation')
+    owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name='books_in_operation')
+    borrwer = models.ForeignKey(User, on_delete=models.CASCADE, related_name='book_in_borrowing_operation')
+    response = models.ForeignKey(Response_to_Book_requests, on_delete=models.CASCADE)
+    situation = models.ForeignKey(books_operation_situations, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f'{self.book.title} is {self.situation.title}'
