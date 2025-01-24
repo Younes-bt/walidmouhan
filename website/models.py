@@ -120,6 +120,8 @@ class Profile(models.Model):
     books_borrwed = models.ManyToManyField(Book, related_name='borrwed_by', null=True, blank=True)
     books_actually_borrwed = models.ManyToManyField(Book, related_name='borrwed_now', null=True, blank=True)
     rating = models.IntegerField(blank=False, null=False, default=5)
+    email = models.EmailField(null=True, blank=True)
+    phone = models.CharField(max_length=30, null=True, blank=True)
 
     def __str__(self):
         return self.full_name
