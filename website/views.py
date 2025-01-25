@@ -218,3 +218,38 @@ def message_view(request, id):
 
 def borrwo_book(request):
     return render(request, 'website/borrow-Books.html')
+
+def signin(request):
+    if request.method == 'POST':
+        usename = request.POST.get('username', '')
+        email = request.POST.get('email', '')
+        password = request.POST.get('password', '')
+        password_confirmation = request.POST.get('password_confirmation', '')
+
+        if User.objects.filter(username=usename).exists():
+            return render(request, 'website/signin.html', {
+                'messageUsername':'لا يمكنك التسحيل بهذا الاسم لأنه مستخدم مسبقا، المرجوا اختيار اسم اخر و المحاولة مجددا',
+                'uesrname':usename,
+                'email':email
+            })
+        if User.objects.filter(email=email).exists():
+            return render(request, 'website/signin.html', {
+                'messageEmail':'لا يمكنك التسحيل بهذا البريد الالكتروني لأنه مستخدم مسبقا، المرجوا اختيار بريد اخر و المحاولة مجددا',
+                'uesrname':usename,
+                'email':email
+            })
+        
+        if password != password_confirmation :
+            return render(request, 'website/signin.html', {
+                'messagePassword':'كلمة المرور غير متطابقة، المرجوا التأكد من كلمة المرور و إعادة المحاولة',
+                'uesrname':usename,
+                'email':email
+            })
+        
+        
+        new_user = User.objects.create(username=usename, email=email, password=password)
+        new_user.save()
+        return render(request, 'website/success.html', {
+            'message':'لقد تم تسجيل حسابكم بنجاح'
+        })
+    return render(request, 'website/signin.html')

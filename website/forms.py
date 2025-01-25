@@ -1,5 +1,5 @@
 from django import forms
-from .models import Article, YoutubeVideos
+from .models import Article, YoutubeVideos, User
 
 class ArticleForm(forms.ModelForm):
     class Meta:
@@ -45,3 +45,4 @@ class YtbVids(forms.ModelForm):
             'vidLink': forms.TextInput(attrs={'class': 'form-control form-input-txt', 'placeholder': 'ضع العنوان هنا', 'id':'video-Link'}),
             'title': forms.TextInput(attrs={'class': 'form-control form-input-txt', 'placeholder': 'ضع العنوان هنا', 'id':'video_title'}),
         }
+        

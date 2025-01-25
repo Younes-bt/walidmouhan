@@ -1,0 +1,39 @@
+{% extends 'website/layout.html' %}
+{% block title %}الموقع الرسمي للباحث وليد موحن | تسجيل الدخول{% endblock %}
+
+{% block body %}
+
+<div class="container">
+    <div class="row form-row">
+        <div class="col form-col rounded rounded-3">
+            <form action="{% url 'signin' %}" method="POST">
+                {% csrf_token %}
+                <div class="mb-1">
+                    <label for="username" class="form-label"> إسم الدخول </label>
+                    <input type="text" class="form-control form-input-txt" name="username" id="username" placeholder="مثال: وليد موحن" value="{{uesrname}}" required aria-describedby="username-help">
+                    <div id="username-help" class="form-text">يمكنك اختيار اسمك الشخصي أو اسم مستعار ليظهر لجميع المستخدمين</div>
+                    <div class="form-text text-danger">{{messageUsername}}</div>
+                </div>
+                <div class="mb-1">
+                    <label for="email" class="form-label"> البريد الإلكتروني </label>
+                    <input type="email" name="email" id="email" class="form-control form-input-txt" placeholder="مثال: walid@mouhan.com" value="{{email}}" required>
+                    <div class="form-text text-danger">{{messageEmail}}</div>
+                </div>
+                <div class="mb-1">
+                    <label for="password" class="form-label"> كلمة المرور </label>
+                    <input type="password" name="password" id="password" class="form-control form-input-txt" required>
+                </div>
+                <div class="mb-1">
+                    <label for="password_confirmation" class="form-label"> تاكيد كلمة المرور </label>
+                    <input type="password" name="password_confirmation" id="password_confirmation" required class="from-control form-input-txt">
+                    <div class="form-text text-danger">{{messagePassword}}</div>
+                </div>
+                <div class="mb-5">
+                    <button type="submit" class="btn btn-primary w-100 m-auto">تسجيل حساب جديد</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

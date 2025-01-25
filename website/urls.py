@@ -16,4 +16,5 @@ urlpatterns = [
     path('messages/', views.messages_view, name='messages'),
     path('message/<int:id>/', views.message_view, name='message'),
     path('borrow/', views.borrwo_book, name='borrow_book'),
+    path('signin/', views.signin, name='signin'),
 ]
