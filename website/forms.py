@@ -1,5 +1,5 @@
 from django import forms
-from .models import Article, YoutubeVideos, User
+from .models import Article, YoutubeVideos, User, Profile
 
 class ArticleForm(forms.ModelForm):
     class Meta:
@@ -46,3 +46,24 @@ class YtbVids(forms.ModelForm):
             'title': forms.TextInput(attrs={'class': 'form-control form-input-txt', 'placeholder': 'ضع العنوان هنا', 'id':'video_title'}),
         }
         
+
+class Profile_edit(forms.ModelForm):
+    class Meta:
+        model = Profile
+        fields = ['full_name', 'pict', 'city', 'profession', 'university', 'phone']
+        labels = {
+            'full_name': 'الإسم الكامل',
+            'phone':'رقم الهاتف',
+            'pict': 'صورة البروفايل',
+            'city':'المدينة',
+            'profession':'الحالة',
+            'university':'الجامعة',
+        }
+        widgets = {
+            'full_name': forms.TextInput(attrs={'class': 'form-control form-input-txt', 'placeholder': 'مثال: وليد موحن', 'id':'fullname', 'aria-describedby':"fullname-help"}),
+            'phone': forms.TextInput(attrs={'class': 'form-control form-input-txt', 'placeholder': 'مثال: 0606060606', 'id':'phone', 'aria-describedby':"phone-help"}),
+            'pict': forms.FileInput(attrs={'class': 'form-control form-input-txt','id':'profilePict', 'aria-describedby':"profilePict-help"}),
+            'city': forms.Select(attrs={'class': 'form-control form-input-txt', 'placeholder': 'المدينة', 'id':'city', 'aria-describedby':"city-help"}),
+            'profession': forms.Select(attrs={'class': 'form-control form-input-txt', 'placeholder': 'طالب/موظف', 'id':'profession', 'aria-describedby':"profession-help"}),
+            'university': forms.Select(attrs={'class': 'form-control form-input-txt', 'placeholder': 'الجامعة/الكلية', 'id':'university', 'aria-describedby':"university-help"}),
+        }

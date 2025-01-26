@@ -111,20 +111,22 @@ class Book(models.Model):
 
 class Profile(models.Model):
     user = models.ForeignKey(User, null=True, blank=True, on_delete=models.CASCADE, related_name='user_profile')
-    full_name = models.CharField(max_length=50, null=False, blank=False)
+    full_name = models.CharField(max_length=50, null=True, blank=True)
     pict = CloudinaryField('image', blank=True, null=True)
-    city = models.ForeignKey(City, on_delete=models.CASCADE)
-    profession = models.ForeignKey(Profession, on_delete=models.CASCADE)
-    university = models.ForeignKey(University, on_delete=models.CASCADE)
+    city = models.ForeignKey(City, on_delete=models.CASCADE, null=True, blank=True)
+    profession = models.ForeignKey(Profession, on_delete=models.CASCADE, null=True, blank=True)
+    university = models.ForeignKey(University, on_delete=models.CASCADE, null=True, blank=True)
     books_added = models.ManyToManyField(Book, related_name='added_by', null=True, blank=True)
     books_borrwed = models.ManyToManyField(Book, related_name='borrwed_by', null=True, blank=True)
     books_actually_borrwed = models.ManyToManyField(Book, related_name='borrwed_now', null=True, blank=True)
-    rating = models.IntegerField(blank=False, null=False, default=5)
+    rating = models.IntegerField(blank=True, null=True, default=5)
     email = models.EmailField(null=True, blank=True)
     phone = models.CharField(max_length=30, null=True, blank=True)
+    otp = models.CharField(max_length=6, blank=True, null=True)
+    is_active = models.BooleanField(default=False)
 
     def __str__(self):
-        return self.full_name
+        return self.user.username
     
 
 class Book_operation(models.Model):

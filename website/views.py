@@ -1,12 +1,14 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Article, YoutubeVideos, Message, User
+from .models import Article, YoutubeVideos, Message, User, Profile
 import markdown2
-from .forms import ArticleForm, YtbVids
+from .forms import ArticleForm, YtbVids, Profile_edit
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.http import HttpResponse
 from django.contrib.auth import authenticate, login as auth_login, logout
 from django.db.models import F
+import random
+from twilio.rest import Client
 
 # Create your views here.
 
@@ -247,9 +249,35 @@ def signin(request):
             })
         
         
-        new_user = User.objects.create(username=usename, email=email, password=password)
+        new_user = User.objects.create_user(username=usename, email=email, password=password)
         new_user.save()
+        new_profile = Profile.objects.create(
+            user = new_user,
+        )
+        new_profile.save()
+        user = authenticate(request, username=usename, password=password)
+        auth_login(request, user)
+        profile_form = Profile_edit(request.POST, instance=new_profile)
         return render(request, 'website/success.html', {
-            'message':'لقد تم تسجيل حسابكم بنجاح'
+            'message':'لقد تم تسجيل حسابكم بنجاح',
+            'profil_form':profile_form
         })
     return render(request, 'website/signin.html')
+
+@login_required
+def editProfile(request):
+    if request.method == 'POST':
+        user = request.user
+        profile = Profile.objects.get(user=user)
+
+        form = Profile_edit(request.POST , request.FILES, instance=profile)
+        if form.is_valid():
+            profile = form.save(commit=False)
+            profile.email = user.email
+            if profile.is_active == False:
+                profile.otp = str(random.randint(100000, 999999))
+
+            profile.save()
+        return redirect('index')
+    else:
+        return render(request, 'website/success.html', {'form': form})
